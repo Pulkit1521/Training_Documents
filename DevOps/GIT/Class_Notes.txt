@@ -265,3 +265,481 @@ Next :::
 		Local Machine 
 		
 		All Misc. git cli command 
+
+		
+				
+#########################
+Day - 9 | 13th Apr. 2026
+#########################		
+	
+	
+	git cli commands :
+	
+		Local Machine 
+
+	- Create local git repository
+	
+	- git add, commit, status, log, - Track the Changes
+	
+	- unstage, reset, revert
+	
+	
+	
+	Create git repository ::::
+	
+		- git init 
+	
+		git init 			# To initialize a Local Repository
+							# It create a .git Directory 
+							# It create a default branch called 'master/main' branch	
+							
+	Local Machine :
+	
+	
+	Create Workspace directory :
+	
+	
+	cd d: 
+	
+	mkdir pl_devops_1304		# Root directory
+	
+	cd pl_devops_1304
+	
+	mkdir repo1 
+	
+	mkdir repo2 
+	
+	mkdir repo3 
+	
+	cd repo1
+	
+	git init 
+	
+	Local Machine 																			
+		
+	Install Git Client 																		
+		
+		
+	Working Directory			 Staging/Index Area 				Local Repository		
+		
+	 file1.txt	 	----------->  file1.txt		   ----------------> index.html_v1.0 		
+					  git add						  git commit 							
+	
+	
+	
+	
+	ls 				# Linux Command to get the list of Files & Directories from Working Directory
+	
+	git ls-files	# Git command to get the list of files and Directories that are being tracked by git.
+	
+	
+	
+	
+	git configuration :::
+	
+	
+		Global Configurations to set the default values for User Name, User Email IDs.	
+		
+		Global Configuration is applicable to all the Repositories.
+	
+		Set the Git Configurations(User Name, User Email IDs) before the very first commit.
+		
+		
+		git config --global user.name "Loksai"
+		
+		git config --global user.email "Loksai"
+		
+		
+		
+			Open git bash terminal 
+			
+			cd d: 
+			
+			mkdir pl_devops_1304		# Root directory
+			
+			cd pl_devops_1304
+			
+			mkdir repo1 
+			
+			
+			git init 
+			
+			
+			git config --global user.name "Loksai"					# One time activity
+			
+			git config --global user.email "Loksai@xyz.com"			# One time activity
+			
+			echo "rec1" >> file1.txt 
+			
+			git add file1.txt 
+			
+			git commit -m "Created file1.txt"
+	
+	
+	
+		git add :::
+		
+			git add 				# To Add the changes from working Directory to Staging Area 
+		
+			git add <file_name>
+			
+			git add <file1_name> <file1_name>
+			
+			git add *.txt s1.java *.doc 
+			
+			git add .					# '.' to identify all the untracked files/changes from working directory
+			
+	
+			
+		
+	UnStage the Changes ::: 			# Used to Undo the changes from Staging Area.
+	
+		git rm --cached l1.html			# Unstage - Changes will be taken back to working directory from staging area.
+		
+		
+		git rm -f l2.html 				# Unstage - Changes will be permanently removed from working directory and staging area.
+		
+		
+	
+	Track the Commit using commit_id:
+	
+		git show <commit_id>
+		
+	
+	Git Log :::
+	
+		git log 			# To get the list of commits & Keep track of the changes 		
+		
+		git log -2		
+		
+		git log --oneline 		# Short Commit _ID
+		
+		git log --oneline -2
+		
+		
+	
+	Git commit :::
+		
+		git commit 				# To Commit the changes from Staging Area to Local Repository	
+								# Create a permanent commit point 
+								
+								
+		git commit -m "Valid Commit Message"					
+	
+		# CR-1001 / REL-042026
+		
+			git commit -m "REL-042026 - Updated the payment process module"
+			
+			
+	
+	GIT IGNORE ::::
+	
+		- Is used to ignore the files from tracking. 
+		
+		- Create .gitignore, and maintain all the file name here to ignore.
+	
+		- As a best practise, it is always recommended to have .gitignore as a very first commit in any repository.
+		
+		
+		
+		Project Folder 
+		
+		
+		Java_Web_application --> Project Repository 
+			
+			src 
+				*.java 
+			test 
+				*.java 
+			resources 
+				*.html 
+				*.css 
+				*.js 
+			app.properties 
+			target/
+				*.war 
+				*.jar 
+			db_User_Cred
+			db_password
+			
+				
+			
+			
+		vi .gitgnore 
+		
+		*.war 
+		*.jar 
+		sample.doc 
+		target/
+		db_User_Cred
+		db_password		
+		
+		
+		
+		save  
+		
+		Create a very first commit with this.
+		
+	
+				
+	
+	- Undo the Commits :::
+	
+	
+		- GIT RESET ::
+		
+	
+		git reset is used to undo the changes from the repository
+		git reset will reset the commit point to the previous commit point 
+		git reset will not create any new commit point for track purpose 
+		git reset is not recommended in the shared repository 
+	
+	
+		Syntax :		
+			- git reset <reset_option> <previous_Commit_ID>	
+
+		Reset Options ::
+		
+			git reset --soft <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to staging area 
+				- The Changes will be available in staging area and working directory					
+		
+			git reset --mixed <previous_Commit_ID> :::		# Default
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will take the changes back to working directory 
+				- The Changes will be available only in working directory			
+			
+			git reset --hard  <previous_Commit_ID> :::
+				- git reset will reset the HEAD pointer to the previous commit point.
+				- It will permanently delete the files from the system 		
+				
+				
+		
+		Repo::
+		
+			master 
+			
+				cm5						# Latest - HEAD
+				cm4
+				cm3
+				cm2
+				cm1
+			
+			
+			git reset --mixed cm4 
+			
+				cm4						# Latest - HEAD
+				cm3
+				cm2
+				cm1				
+			
+			
+			
+			
+			git reset --mixed cm2 
+			
+
+				cm2						# Latest - HEAD
+				cm1				
+		
+Next :::
+		
+		- GIT RESET ::
+		
+		- GIT REVERT ::
+	
+
+  503  cd d:
+  504  mkdir pl_devops_1304
+  505  cd pl_devops_1304/
+  506  ls
+  507  clear
+  508  pwd
+  509  mkdir samplerepo1
+  510  ls
+  511  cd samplerepo1/
+  512  clear
+  513  pwd
+  514  ls
+  515  ls -a
+  516  git init
+  517  ls
+  518  ls -a
+  519  cd .git/
+  520  ls
+  521  cd ..
+  522  clear
+  523  ls
+  524  git status
+  525  ls
+  526  ls
+  527  echo "rec1" >> file1.txt
+  528  git status
+  529  git add file1.txt
+  530  git status
+  531  git commit -m "Created file1.txt"
+  532  git status
+  533  git log
+  534  cd ..
+  535  clear
+  536  pwd
+  537  ls
+  538  mkdir samplerepo2
+  539  ls
+  540  cd samplerepo2/
+  541  git init
+  542  ls -a
+  543  clear
+  544  ls
+  545  echo "rec1" >> f1.txt
+  546  ls
+  547  git status
+  548  ls
+  549  git ls-files
+  550  git add f1.txt
+  551  git status
+  552  ls
+  553  git ls-files
+  554  git commit -m "Created f1.txt"
+  555  git log
+  556  echo "rec1" >> f2.txt
+  557  git add f2.txt
+  558  git commit -m "Created f2.txt"
+  559  git log
+  560  clear
+  561  ls
+  562  git log
+  563  ls -a
+  564  cd .git/
+  565  ls
+  566  cd ..
+  567  clear
+  568  ls
+  569  git log
+  570  git config --global user.email "Loksai@xyz.com"
+  571  echo "rec1" >> f3.txt
+  572  git add f3.txt
+  573  git commit -m "Created f3.txt"
+  574  git log
+  575  git init
+  576  clear
+  577  ls
+  578  git log
+  579  clear
+  580  git log
+  581  clear
+  582  cd ..
+  583  ls
+  584  mkdir samplerepo3
+  585  cd samplerepo3/
+  586  celar
+  587  clear
+  588  git init
+  589  echo "rec1" >> q1.txt
+  590  ls
+  591  echo "rec1" >> q2.txt
+  592  echo "rec1" >> q3.txt
+  593  echo "rec1" >> q4.txt
+  594  ls
+  595  echo "rec1" >> s1.java
+  596  echo "rec1" >> s2.java
+  597  echo "rec1" >> s3.java
+  598  echo "rec1" >> w1.doc
+  599  echo "rec1" >> w2.doc
+  600  echo "rec1" >> w3.doc
+  601  echo "rec1" >> l1.html
+  602  echo "rec1" >> l2.html
+  603  ls
+  604  git status
+  605  git ls-files
+  606  git add l1.html
+  607  git status
+  608  git ls-files
+  609  git add l2.html q2.txt s1.java
+  610  git status
+  611  git add *.txt s2.java
+  612  git status
+  613  git add .
+  614  git status
+  615  git ls-files
+  616  git rm --cached l1.html
+  617  git status
+  618  git rm -f l2.html
+  619  ls
+  620  git status
+  621  git ls-files
+  622  git status
+  623  git add .
+  624  git commit -m "Created some files"
+  625  git log
+  626  git show f88de4e3b
+  627  git log
+  628  echo "rec1" >> m1.txt
+  629  git add .
+  630  git commit -m "created m1.txt"
+  631  echo "rec1" >> m2.txt
+  632  git add .
+  633  git commit -m "created m2.txt"
+  634  echo "rec1" >> m3.txt
+  635  git add .
+  636  git commit -m "created m3.txt"
+  637  echo "rec1" >> m4.txt
+  638  git add .
+  639  git commit -m "created m4.txt"
+  640  echo "rec1" >> m5.txt
+  641  git add .
+  642  git commit -m "created m5.txt"
+  643  echo "rec1" >> m5.txt
+  644  git add .
+  645  git commit -m "created m5.txt"
+  646  clear
+  647  git log
+  648  ckear
+  649  clear
+  650  git log -2
+  651  git log -1
+  652  git log --oneline
+  653  git show 9e94430
+  654  git log --oneline -2
+  655  git show -2
+  656  clear
+  657  git log
+  658  git log --oneline
+  659  git show 6429ec1
+  660  git statu
+  661  git status
+  662  clear
+  663  ls
+  664  cd ..
+  665  ls
+  666  mkdir samplerepo4
+  667  cd samplerepo4
+  668  git init
+  669  clear
+  670  git status
+  671  ls
+  672  vi .gitignore
+  673  ls
+  674  ls -a
+  675  cat .gitignore
+  676  git status
+  677  git add .
+  678  git commit -m "Initial Commit for .gitignore"
+  679  clear
+  680  ls
+  681  git status
+  682  git log --oneline
+  683  ls
+  684  echo "rec1" >> l1.txt
+  685  ls
+  686  git status
+  687  echo "rec1" >> sample1.txt
+  688  ls
+  689  git status
+  690  cat .gitignore
+  691  git add .
+  692  git status
+  693  ls
+  694  git ls-files
+  695  history
