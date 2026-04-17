@@ -1658,3 +1658,171 @@ Day - 11 | 16th Apr. 2026
 	
 	
 		- Pull Request : Is something created by the Developers and submitted to the Reviewer. 
+
+
+		
+##########################
+Day - 12 | 17th Apr. 2026
+##########################	
+	
+	
+	- Working with Remote Repositories ::::
+	
+		- GitHub/Azure Repository/GitLab/Bitbucket
+		
+		- GitHub 
+		
+		
+		- Create Remote Repository
+		
+		- Create Branches in Remote Repository
+	
+		- Merge the Changes 
+		
+		- git clone, fetch, pull, push ---->
+		
+		- git remote 
+	
+	
+	
+		- Pull Request : Is something created by the Developers and submitted to the Reviewer. 
+		
+		
+		Visual Studio Code 
+		
+		
+		Developers' workload :
+		
+		- Enhancement / Bugfix Project :
+		
+			- Handling existing Remote Repo.
+			
+				- git clone 
+		
+		- New Project 
+	
+	
+		git clone 				# To Clone/Copy the entire Remote Repository to Local Machine
+		
+		git add 				# To Add the changes from working Directory to Staging Area 
+		
+		git commit 				# To Commit the changes from Staging Area to Local Repository 
+		
+		git push				# To Push the changes from Local Repository to Remote Repository  
+		
+		
+		git fetch/git pull :::
+		
+			- Both git fetch & git pull are used to handle the incremental changes from Remote Repositories
+			
+			- Git Fetch 		
+			
+				# It is used to just check for incremental changes in the Remote Repository, if the incremental changes exist, it will update the Local Repository, Not the Working Directory. 
+			
+				# used Git Merge/Pull to update the Working Directory explicitly.
+				
+			- Git Pull 
+			
+				# It is used to check for incremental changes in the Remote Repository, if the incremental changes exist, it will update the Local Repository as well as the Working Directory. 
+				
+				# git pull = git fetch + git merge
+
+				# As a best, it is always recommended to use git pull to keep the Local Repository in-sync with Remote Repository
+				
+				
+		Fork 				# Fork is used to Copy one Remote Repository to another Remote Repository
+		
+		
+		git init 			# To initialize a Local Repository
+							# It create a .git Directory 
+							# It create a default branch called 'master/main' branch	
+	
+	
+	
+	- GIT CLONE :::
+	
+		git clone <remote_repository_url>
+		
+		git clone https://github.com/PL-DevOps-Cloud-2503/remoterepo1.git
+	
+	
+		git remote -v		# To get the list of Remote Repositories link with the Local Repository
+		
+			
+		git push -u origin local-feature1			# Push the Changes to Remote Repository 
+	
+			Github access token to push the changes 
+			
+			- Create github access token.
+			
+			
+			
+	
+	
+	
+	
+	git pull --> To keep the local repo in-sync with remote repository
+	
+	
+	git rebase --> TO keep the current branch in-sync with the target branch within the local repository
+	
+	
+	git init 
+	
+	echo "rec1" >> file1.txt 
+	
+	git add .
+	
+	git commit -m "cm1" 
+	
+	git remote -v 
+	
+	git remote add origin1 https://github.com/PL-DevOps-Cloud-2503/dummyremoterepo1.git				# To Link the Remote Repository to the Local Repository
+	
+	git remote add origin2 https://github.com/PL-DevOps-Cloud-2503/dummyremoterepo2.git	
+	
+	git remote remove <remote_repo_alias_name>
+	
+	
+	The Remote Repository Alias Name used to uniquely identify the remote repository 
+	
+	
+	
+	
+	- Access GitHub Repositories using Visual Studio Code 
+	
+	
+		Install Visual Studio Code on Local Machine 	- Develop the Source Code.
+			
+			- https://code.visualstudio.com/download		
+			
+			
+		- Java Maven Web Application ::::
+		
+		- Project Structure :::
+		
+		- Project_Folder ::
+		
+			- Java_Maven_Web_Application
+		
+				- src 
+					main 
+						*.java 
+						*.java 
+					test 
+						*.java 
+						*.java 
+						
+				- resources 
+					*.html 
+					*.css 
+					*.js 
+					
+				- application.properties 
+				
+				- target
+					*.war
+					
+					
+		- Clone Remote Repository using VS Code :::
+	
