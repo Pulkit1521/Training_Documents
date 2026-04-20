@@ -234,3 +234,122 @@ Next :::
 	JACOCO Plugins 
 	
 	Jenkins 
+
+	
+	
+##########################
+Day - 13 | 20th Apr. 2026
+##########################	
+
+
+	How Maven Works ???
+	
+		- pom.xml file 
+		
+		
+		- maven goals 
+		
+
+
+		Maven Project :
+		
+			pom.xml - Project Object Model :
+			
+				- Will be part of the Java Application Project - Source Code Repository
+				- It is used to define the properties of application artifacts 
+				- It is used to define dependencies and the plugins required to perform build/unit-testing
+				
+				
+			Maven Repository :		https://mvnrepository.com/
+			
+				- Maven Repositories Contains the Maven Dependencies and Plugins 
+				- During Build, Maven refer to this Repositories and Download the Dependencies to perform Application Build, Unit Testing etc...
+				
+				Eg.: 
+				Build Environment (VM) :::
+
+					Build the application	--> Jdk, Maven 
+					
+					Unit Testing - Junit Testing Tool 
+	
+	
+	Non-Prod :
+	
+	
+		- Development Environment
+			- Own by the developers 
+				- IDE, 						# Program - 5 functions
+				- Unit Testing 				# 40 Test Cases 
+					- maven,springboot web-app framework,plugins,jacoco,junit 
+					
+				- Push the Code to  Repository
+		
+		- Build Environment					# Owned by DevOps Team 		
+				
+				Using DevOps Pipeline 
+				- Pull the code 	-- pom.xml 
+				
+				- build 
+				- unit test 
+				- verify the code coverage - 100% 
+		
+		- Test Environment 
+				- QA 
+				
+				- UAT 
+		
+	- PROD :
+		
+		
+		Maven Build Tool :
+		
+			- pom.xml
+
+
+
+		Maven Goals : 
+		
+			This defines the actions we perform using Maven 
+		
+			● mvn compile 	- to compile the source code
+			● mvn test 		- to compile and execute junit test cases
+			● mvn package 	- to compile, test and create artifacts in the target folder of Project Library
+			● mvn clean 	- to clean the target folder.
+
+			Eg.: 
+			
+			mvn clean package 		
+	
+	
+		Java Web Application Project : - 
+
+		My_Web_App - Folder 
+		
+		Maven Project Structure :::			# Java Maven Desktop/Console/terminal Application;
+
+		MVN_Project1				# Project Name 
+			src 
+				main				# Maintain the source code *.java - Business Logic 
+					*.java
+				test				# Maintain the Test Cases and Test Data - JUnit 
+					*.java
+			target
+				artifacts *.war / *.jar
+				
+			pom.xml 			==> defines the application artifacts, plugins and all the required depedencies
+
+			JRE_Libraries
+			MVN_Libraries	
+			
+		
+	Java Code Coverage - JaCoCo :::
+
+	<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+	<dependency>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.12</version>
+	</dependency>		
+		
+		
+
