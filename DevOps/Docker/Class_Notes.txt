@@ -342,7 +342,7 @@ Day - 19 | 1st May 2026
 							
 		Stateful 			-> Maintains the State of Execution
 
-		Stateless 			-> This is the default/basic property of any Container
+		Stateless 			-> This is the default/basic property of any Container(we never use a container to store the container. we just use a container to execute the application or task)
 		
 		
 		Create Container Volume ::::
