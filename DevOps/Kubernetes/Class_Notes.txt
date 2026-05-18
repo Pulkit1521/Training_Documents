@@ -431,3 +431,355 @@ Next :::
 	- Setup the Kubernetes Cluster ::
 	
 	- Working with Kubernetes to Automate Continuous Deployment ::
+
+
+	
+##########################
+Day - 24 | 14th May 2026
+##########################
+
+		Deployment Controller Object :::
+		
+			--> It is used to deploy the pods and ensure high availability of pods by creating pod replicas 
+			--> 1. Create Muliple instance/replicas/copies of pods 
+				2. Used to Scale-Up / Scale-Down the Pods 
+				3. Used to Upgrade the application pods 
+				4. Used to Down-grade/roll-back the application pods
+			--> The upgrade/down-grade of application pods can be done without any downtime. 
+			--> To achieve zero-downtime during upgrade/down-grade, By Default, it used Rolling-Update Deployment Strategy.
+				
+			-->	5. Supports self-healing.	
+
+	
+			--> Continuous Deployment ::::
+			
+			
+		1. Deployment Object 
+		
+		2. Replicaset 
+		
+		3. Pod Instances 
+		
+		
+		- 	webapp_img:v1.0						===========>			- 	webapp_img:v2.0
+		
+		pod - 1.1  - 	webapp_img:v1.0									pod - 1.1  - 	webapp_img:v2.0								
+		
+		pod - 1.2  - 	webapp_img:v1.0									pod - 1.2  - 	webapp_img:v2.0	
+		
+		pod - 1.3  - 	webapp_img:v1.0									pod - 1.3  - 	webapp_img:v2.0
+		
+		
+		
+	- Kubernetes Services ::::
+	
+		- ClusterIP Service 		# To enable the pod communication within the cluster
+		
+		- NodePort 					# To Expose the pods to internet
+									# It is applicable at the application service level
+									# It assigns the ports - 30000 to 32767
+		
+		- Load Balancer Service 	# AWS/AZURE/GCP Load Balancer / Custom On-Prem Load Balancer using Nginx
+		
+Next:
+
+	- Demo NodePort Service 
+	
+	- Volumes 
+	
+		- HostPath Volumes
+		
+		- Persistant Volumes
+	
+	- Setup the Kubernetes Cluster ::
+	
+	- Working with Kubernetes to Automate Continuous Deployment ::
+
+
+	
+##########################
+Day - 25 | 15th May 2026
+##########################
+
+	
+
+- Kubernetes Volumes 
+	
+	- Used to maintain the Persistant Data!
+
+	- HostPath Volume:
+	
+		- It same as like Docker Volume.
+		- It is applicable at the Pod Level. 
+		- HostPath Volumes are created on the Host Machine, where the pod get deployed at runtime.
+		- Pods can use this Hostpath Volume to maintain the Input and out Files.
+		
+	- Create HostPath Volume 	
+	
+	- Attach it to the Pods.
+	
+	
+	- Persistant Volume				# Is used to allocate the Persistant Volumes to the Pods from the external Storage Medium
+									# Used to reserve huge amount of data at the cluster level 
+									# It abstracts the Volume allocation process.
+	
+	- Persistant Volume Claim		# Developers create the Persistant Volume Claim (Request Form)
+									# Storage Administrators process the Claim and allocate the requested volume using Persistant Volume Pool.
+									# Persistant Volume Claim is attached to the Pods 
+	
+	
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-hostpath
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      volumeMounts:
+      - mountPath: /test-mnt
+        name: test-vol
+  volumes:
+  - name: test-vol
+    hostPath:
+      path: /test-vol
+	  
+	 
+	- Jenkins:
+	
+		- Created *.war 
+		
+	- Docker:
+
+		- Create *_img:V1.0
+		
+	- Kubernetes:
+		
+		- Deploy *_img:v1.0 to Kubernetes Cluster 
+		
+			- Manually 
+			
+			- Using Build Orchestration tools like Jenkins/Azure Pipelines 
+		
+		
+	- Using Jenkins Pipeline:
+	
+		- Deploy the Application Images to Kubernetes Cluster :::
+		
+		
+		
+	- Working with Kubernetes(Deployment Controller Object & Node Service) to Automate Continuous Deployment ::
+						
+		- Server & Resources:	
+		
+			Jenkins_Master (VM)			
+					==> To Create Jenkins CI/CD Pipeline Projects and schedule to the builds in the slave_nodes
+					==> Tools: git, jdk, jenkins
+																	
+				Jenkins_SlaveNode1 (VM)	
+					==> Perform Application Builds - Java Applications 
+					==> Tools: git, jdk, maven, docker		
+					
+			Kubernetes_Master (VM)
+				- Kubernetes_WorkNode1
+				- Kubernetes_WorkNode2
+
+
+
+	- Integration of Jenkins & Kubernetes Nodes ::::	
+				
+		- Integration of Jenkins Master & Slave Nodes:
+		
+			SSH Connection :
+				
+				- Linux User_Name,Host_Name,SSH Key-Pair
+				
+				- Docker Engine Access to Linux User Profile
+				
+					==> usermod -aG docker devopsadmin
+					
+					
+		- Integration of Jenkins Master & Kubernetes_Master:
+		
+			- SSH Connection :
+				
+				- Create Linux User(devopsadmin) on Kubernetes_Master Node 
+				
+					- Linux User_Name,Host_Name,SSH Key-Pair
+					
+					- Enable kubernetes Access to devopsadmin user.
+
+#####################
+#Add User on Kubernetes Master: 
+
+useradd devopsadmin -s /bin/bash -m -d /home/devopsadmin
+
+su - devopsadmin
+
+#ssh-keygen
+
+#for Ubuntu ::
+#ssh-keygen -t rsa -b 2048 -m PEM								
+
+ssh-keygen -t ecdsa -b 521									
+
+ls ~/.ssh 
+
+#You should see following two files:
+
+#id_ecdsa - private key
+#id_ecdsa.pub - public
+
+cat id_ecdsa.pub > authorized_keys
+
+chmod 600 /home/devopsadmin/.ssh/*
+
+#usermod -aG docker devopsadmin			
+
+#As a root user edit below file:
+
+$ visudo
+
+#add the below mentioned line in the file and save it.
+
+devopsadmin ALL=(ALL) NOPASSWD: ALL
+
+su - devopsadmin 
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+##################################################################
+
+					
+				- Use Publish Over SSH Plugin and Attach Jenkins Master & Kubernetes_Master
+				
+				
+				
+		- DockerHub User_Name & Access Token
+		
+			- Update Docker Hub Credentials in the Jenkins Credential Manager
+			
+				- Credential Manager 
+					- Choose UserName with Password type 
+					
+					
+	- Onboard the Applications to Automate Deployments 
+	
+		- GitHub Source Code Repository :::
+		
+			- Should have Dockerfile along with the Source Code components
+		
+				vi Dockerfile 
+				
+				FROM tomcat:8.0
+				COPY target/*.war /usr/local/tomcat/webapps
+				EXPOSE 8080	
+			
+			
+			- Kubernetes Manifest files -->  kube_deployment.yaml(deployment object & NodePort)
+			
+			
+# kdeploy.yaml		
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loksai-eta-deploy
+  labels:
+    app: loksai-eta-deploy-lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: loksai-eta-app
+  template:
+    metadata:
+      labels:
+        app: loksai-eta-app
+    spec:
+      containers:
+      - name: loksai-eta-container
+        image: loksaieta/pl-java-web-app:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loksai-eta-np-service
+  labels:
+    app: loksai-eta-app
+spec:
+  selector:
+    app: loksai-eta-deploy-lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31028
+    port: 8080
+    targetPort: 8080
+	
+
+
+### CICD Pipeline: 	
+
+		- Create the Jenkins Pipeline :
+		
+			- Stages of Jenkins CI Pipeline using Docker :
+			
+				1. SCM_Checkout
+				2. Application_Build					--> done by maven using pom.xml 
+				3. Application Image Build 				--> done by Docker using Dockerfile
+				4. Login to DockerHub 
+				5. Push Application Image to DockerHub
+				6. Deploy to Kubernetes Cluster
+				
+	
+pipeline {
+    agent { label 'slave1' }
+    
+  
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}   
+
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout - Download Source Code'
+                git 'https://github.com/PL-DevOps-Cloud-2503/java-webapp-project.git'
+            }
+        }
+        stage('Application Build') {
+            steps {
+                echo 'Perform Application Build'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Application Image Build') {
+            steps {
+				sh "docker build -t loksaieta/pl-kdeploy_demo_app ."
+
+            }
+        }
+        stage('Login to DockerHub') {
+            steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('Push to DockerHub') {
+            steps {
+				sh "docker push loksaieta/pl-kdeploy_demo_app"
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+					sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes_Cluster', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f kube_deploy.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				}
+            }
+        }
+    }
+}
