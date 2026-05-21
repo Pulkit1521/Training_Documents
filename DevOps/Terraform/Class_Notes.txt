@@ -141,8 +141,25 @@ Day - 28 | 21st May 2026
 		- Delete/Destroy Resource		===>		- 
 		
 		- Modify/Change Resource		===>		~
-		
-		
+
+
+provider "aws" {
+  region = "ap-south-1"
+  access_key = "asdfasdfasdfasdfasdfasdfasd"
+  secret_key = "asdfasdfasdf"  
+}
+
+resource "aws_instance" "instance1" {
+  ami           = "ami-09ed39e30153c3bf9"
+  instance_type = "t2.micro"
+  key_name = "AWS_MLOps_KeyPair"
+
+  tags = {
+    Name = "QASERVER"
+  }
+}
+
+
 Next :::
 
 	Terraform tfstate File ::::
