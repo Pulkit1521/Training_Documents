@@ -169,3 +169,19 @@ Next:
 		- Ansible Galaxy 		
 
 	- Resource Provisioning using Terraform ::::
+
+
+	
+##########################
+Day - 28 | 21st May 2026
+##########################	
+
+	- Ansible Galaxy :::	
+
+		https://galaxy.ansible.com/ui/
+		
+		
+		ansible-galaxy init <Role_Name>				# Create 
+		
+		ansible-galaxy role install <Role_Name>		# Download
+
