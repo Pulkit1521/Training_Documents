@@ -183,3 +183,75 @@ Implementation Procedures/Steps :::
 					
 			--> Using Prometheus & Grafana capture the Pods Execution status and Resource utilization
 					
+			
+			
+		
+			GITOps Approach :::
+			
+			Scenario1 :
+
+				Pipeline1 :
+				Source_Code Repo :
+				
+				- SCM-Checkout --> Create New_Test_Server(Terraform) --> Configure New_Test_Server(Ansible)
+
+GitOps ::::
+
+	Infra-structure Provisioning & Configurations ::::
+	
+	
+	Used to the Create and Configure resources dynamically!
+	
+	Terraform / Ansible to Create Resources using DevOps Pipelines(Jenkins/Bamboo/Az Pipelines/Github Actions)!
+	
+	
+Scenarios :::
+	
+	Scenario 1. 
+	
+		Pipeline 1:
+		
+			SCM_Checkout 	---> 	Application Build 		--->		Deploy to Target_Server
+		
+		
+	
+	Scenario 2 :	
+	
+		Pipeline 1:				
+			SCM_Checkout 	--->	Create a New_Target_Server(Terraform)		---> 	Configure New_Target_Server(Ansible)
+			
+			
+		Pipeline 2:		
+			SCM_Checkout 	---> 	Application Build 		--->		Deploy to New_Target_Server	
+			
+			
+	
+	
+	Scenario 3 : GitOps:		Repo1 -> Application_Source_Code & Infra-structure IAC (Terraform/Ansible Scripts)
+	
+		Pipeline 1:
+		Jenkins 
+		(Jenkins_SlaveNode - Build Server)
+		
+			SCM_Checkout -->	Application_Build --> Create a New_QA_Test_Server(Terraform) ---> Configure New_QA_Test_Server(Ansible)
+			
+																												|
+																												|
+																												|
+																												|
+																								
+																										Automate QA Testing
+																										
+																												|
+																												|
+																												|
+																												|
+																												
+																										 Notify the Users	--- Delete New_QA_Test_Server	
+	
+																												|
+																												|
+																												|(Success)
+																												|
+																												
+																										  Deploy to Prod
