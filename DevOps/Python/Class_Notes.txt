@@ -1,0 +1,98 @@
+
+
+##########################
+Day - 30 | 25th May 2026
+##########################
+
+	- Fundamentals of Python Programming :::
+
+		Overview of Python
+		Features, Benefits, Uses of Python
+		Installation and Setup of Python Environment
+		Various Types of Sequences in Python
+		File Operations
+		Python Functions
+		OOPs Concepts
+		Modules
+		Errors and Exception Handling
+		Python Console based application and Web Application using Flask	
+	
+	
+	- Create Python Console Application
+	
+	- Python Web Application - using Flask Web Application Framework.
+	
+			API Response: JSON File: Key:value Pairs
+	
+		- jdk :
+			- Java Console/System Applications
+			
+			- Web Applications - Spring boot web application framework --> http / tomcat
+			
+			
+	- Working with Python :
+	
+		- Install Python 
+		
+		- Install Visual Studio Code IDE 
+		
+	- Web Application Framework :
+	
+		- Flask 
+		- Django
+
+		- AI-ML Model Design:
+			- Streamlit
+			- Fast-API 
+
+
+	Application Programning Languages :
+	
+		- Java 		- To develop Console based application and Web Application
+		- Python 	- To develop Console based application and Web Application
+
+
+	- Python Examples :
+	
+		- Install Python 			
+			https://www.python.org/downloads/
+			
+			--> IDLE 
+		
+		- Install Visual Studio Code IDE 
+
+		- Create Python Console Application
+		
+
+	- Python Web Application - using Flask Web Application Framework:::
+
+		- Python Web Application Framework ::::
+
+			-> Flask 		==> Lightweight yet powerfull framework for web application using Python
+			-> Django 		==>	Create Web-Application using Python/.Net Framework
+			-> Streamlit	==> Create Web Application for API, AI-ML Model	- chat-bot
+
+		
+			-> Flask Web Application Framework :::	--> Enable port to execute the web application
+			
+													--> Port 5000 
+			
+				web application components:
+				
+					->resources :
+					
+						src	
+							- *.py			# Business Logics
+							
+						templates			# Web User Interface 
+						
+							- *.html
+							- *.js
+							- *.css 
+						
+						
+Next :::
+
+	- Create Python Web Application using Flask Web Application Framework :::
+
+	- DevOps Project 
